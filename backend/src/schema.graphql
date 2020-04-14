@@ -1,0 +1,69 @@
+# import * from './generated/prisma.graphql'
+# The above line imports all of the types and all of the imports from prisma.graphql
+
+# Everytime we add values to this schema, we need to add appropriate value to the corresponding resolver
+
+type SuccessMessage {
+  message: String
+}
+
+type Mutation {
+  # Every mutation created takes the descriptions in bracket as arguments when they are called from 
+  # the clientside; .E.g. "deleteItem" takes only "id" as argument when it is called
+
+  # We create an item and then return the item using the : Item! format
+  createItem(title: String, description: String, price: Int, image: String, largeImage: String): Item!
+  
+  # We update an item and then return the Item by using the Item! format
+  updateItem(id: ID!, title: String, description: String, price: Int): Item!
+
+  deleteItem(id: ID!): Item!
+
+  signup(email: String!, password: String!, name: String!): User!
+
+  signin(email: String!, password: String!): User!
+
+  signout: SuccessMessage
+
+  requestReset(email: String!): SuccessMessage
+  
+  resetPassword(resetToken: String!, password: String!, confirmPassword: String!): User!
+
+  updatePermissions(permissions: [Permission], userId: ID!): User
+  
+  addToCart(id: ID!): CartItem
+
+  removeFromCart(id: ID!): CartItem
+
+  createOrder(token: String!): Order!
+}
+
+type Query {
+  # items: [Item]! #Queries the items in the db and returns all items for display purpose
+
+  # Instead of the regular query at the top, the items query below does not just return the all the 
+  # items in the db as before. It has extras .eg. where: for db searching, orderBy: allows ordering 
+  # of items on a page, skip & first which allows skipping content to specific location on a page.
+  items(where: ItemWhereInput, orderBy: ItemOrderByInput, skip: Int, first: Int): [Item]!
+
+  # Queries the items in the db and returns the pecific item to be updated
+  item(where: ItemWhereUniqueInput!): Item
+
+  itemsConnection(where: ItemWhereInput): ItemConnection!
+
+  me: User
+
+  users: [User]!
+  
+  order(id: ID!): Order
+
+  orders(orderBy: OrderOrderByInput): [Order]!
+}
+
+type User{
+  id: ID!
+  name: String!
+  email: String!
+  permissions: [Permission!]!
+  cart: [CartItem!]!
+}

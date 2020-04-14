@@ -1,0 +1,11 @@
+# This endpoint here is pointing to the "PRISMA_ENDPOINT" in the variables.env file
+#endpoint: ${env:PRISMA_ENDPOINT}
+endpoint: https://eu1.prisma.sh/ogunkanmi-ayodele/drpompin-sick-fits/prod
+# endpoint: https://eu1.prisma.sh//dev
+datamodel: datamodel.graphql
+secret: ${env:PRISMA_SECRET} #This locks down the database 
+
+# This is a post-deploy hook and functions to pull down the schema
+hooks:
+  post-deploy:
+    - graphql get-schema -p prisma
