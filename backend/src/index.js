@@ -43,6 +43,8 @@ server.express.use(async (req, res, next) => {
     next();
 });
 
+
+// start it!
 server.start(
     {
     // This allows for our server to b hit from only approved URLs
