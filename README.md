@@ -22,11 +22,14 @@ This app is based on Wes Bos' "Advanced React Tutorial"; https://github.com/wesb
 ### Home page
 ![Home screenshot](./frontend/static/images/sickfits_home.png)
 
+
 ### Cart view
 ![Cart screenshot](./frontend/static/images/sickfits_cart.png)
 
+
 ### Checkout page
-![Checkout screenshot](./frontend/static/images/sickfits_checkout.png)\
+![Checkout screenshot](./frontend/static/images/sickfits_checkout.png)
+
 
 ### Order Summary page
 ![Order screenshot](./frontend/static/images/sickfits_order.png)
