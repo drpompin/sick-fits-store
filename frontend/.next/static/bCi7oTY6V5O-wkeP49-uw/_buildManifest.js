@@ -1,1 +1,0 @@
-self.__BUILD_MANIFEST = (function(a){return {"/order":[a],"/orders":[a]}}("static\u002Fchunks\u002F0807b3ac5bcc66af49551e51e522989549627cd6.ebd9bc5a56940323a7f0.js"));self.__BUILD_MANIFEST_CB && self.__BUILD_MANIFEST_CB()
